@@ -11,7 +11,12 @@ const myApiCall = (url, callback) => {
         data += chunk
       })
       resp.on('end', () => {
-        callback(null, JSON.parse(data))
+        try {
+          callback(null, JSON.parse(data))
+        }
+        catch {
+          callback("It dun broked")
+        }
       })
     })
     .on('error', err => {
