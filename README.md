@@ -1,5 +1,15 @@
 # Promise Me This
 
+## Learning Objectives
+To be able to:
+- create a new Promise
+- handle errors when creating a Promise
+- refactor error first callbacks into promises
+
+## Relevant Resources
+- [MDN Docs - Promises]( https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+
+## Morning Challenge
 
 Callbacks are awesome as they allow us to work with asynchronous code by waiting until a response comes back before we do something with it. However, this waiting can begin to make our code look messy when we need to link multiple async functions together. This is when **promises** can become super useful, they're a wrapper around callbacks . Below is an example of linking 5 async functions with error first callbacks compared to promises.
 
