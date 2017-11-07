@@ -58,7 +58,7 @@ const readAFile = (callback) => {
 
 //now lets call it
 readAFile((err, res) => {
-  if err err throw error
+  if err throw err
   else console.log(res)
 })
 ```
@@ -79,7 +79,7 @@ const readAFile = (url) => {
 }
 
 //now lets call it
-readAFile.then((res)=> console.log(res))
+readAFile.then((res)=> console.log(res)).catch((err)=> console.log(err))
 ```
 
 ## Challenge One
@@ -89,11 +89,11 @@ In `challenge.js` you will find code to make an api call using the http module. 
 Nice work on your Promise! Now let's have a go at linking Promises. Your challenge is to:
 1. make an api call to the pokeApi to find out about pikachu
 2. make a second Promise that grabs pikachu's first move and find out more information about it's first `held_item`
-3. Link the two Promises together so that the second starts when the first returns.
+3. Link the two Promises together so that the second starts when the first is fulfilled.
 
 ## Challenge Three
 Did you really finish that fast :dash: ? Okay, so now your challenge is to find out info on the 3 starter pokemon (Bulbasaur :leaves:, Charmander :fire: & Squirtle :sweat_drops: ) and print the return info. To do this you need to:
 - Send off the 3 api calls one after the other
-- Only print when all thee have returned.
+- Only print when all thee have fulfilled.
 
 [These docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) will be your friend :heart:
