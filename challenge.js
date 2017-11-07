@@ -1,7 +1,7 @@
 const https = require('https')
 
-const pokemon = 'pikachu'
-const apiUrl = `https://pokeapi.co/api/v2/pokemon/${pokemon}/`
+const pokeUrl = pokemon => `https://pokeapi.co/api/v2/pokemon/${pokemon}/`
+const pikaUrl = pokeUrl('pikachu')
 
 const myApiCall = (url, callback) => {
   https
@@ -13,9 +13,8 @@ const myApiCall = (url, callback) => {
       resp.on('end', () => {
         try {
           callback(null, JSON.parse(data))
-        }
-        catch (e) {
-          callback("It dun broked")
+        } catch (e) {
+          callback('It dun broked')
         }
       })
     })
@@ -24,13 +23,13 @@ const myApiCall = (url, callback) => {
     })
 }
 
-myApiCall((err, res) => {
-  console.log(res)
+myApiCall(pikaUrl, (err, res) => {
+  if (err) console.log(res)
+  else console.log(res)
 })
 
 //Now let's make it a Promise
 
-const myPromiseApi =
-
+// const myPromiseApi =
 
 //And call it here...
