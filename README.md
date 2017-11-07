@@ -58,7 +58,7 @@ const readAFile = (callback) => {
 
 //now lets call it
 readAFile((err, res) => {
-  if (err) throw err
+  if (err) console.log(err)
   else console.log(res)
 })
 ```
