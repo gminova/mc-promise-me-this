@@ -16,13 +16,13 @@ Callbacks are awesome as they allow us to work with asynchronous code by waiting
 ### Calling Error First Callbacks
 ```js
 funcOne((err, resOne) => {
-  if err throw error
+  if (err) recoverFromError(err)
   else funcTwo((err, resTwo) => {
-    if err throw error
+    if (err) recoverFromError(err)
     else funcThree ((err, resThree) => {
-      if err throw error
+      if (err) recoverFromError(err)
       else funcFour ((err, resFour) => {
-        if err throw error
+        if (err) recoverFromError(err)
         else funcFive ((err, resFive) => {
           //do the thing
         })
@@ -38,7 +38,7 @@ funcOne
   .then(funcThree)
   .then(funcFour)
   .then(funcFive)
-  .catch((err)=> throw err)
+  .catch((err)=> recoverFromError(err))
 ```
 
 ## Syntax
@@ -50,7 +50,7 @@ const readAFile = (callback) => {
   //here you do something async
   fs.readFile(`${__dirname}/public/index.html`, 'utf8', (err, data) => {
     //here you do something if it errors
-    if err callback(err)
+    if (err) callback(err)
     //here you do something if it works
     else callback(null, data)
   }
@@ -58,7 +58,7 @@ const readAFile = (callback) => {
 
 //now lets call it
 readAFile((err, res) => {
-  if err throw err
+  if (err) throw err
   else console.log(res)
 })
 ```
@@ -71,7 +71,7 @@ const readAFile = (url) => {
     //here you do something async
     fs.readFile(`${__dirname}/public/index.html`, 'utf8', (err, data) => {
       //here you do something if it errors
-      if err reject(err)
+      if (err) reject(err)
       //here you do something if it works
       else resolve(data)
     });
@@ -84,6 +84,8 @@ readAFile.then((res)=> console.log(res)).catch((err)=> console.log(err))
 
 ## Challenge One
 In `challenge.js` you will find code to make an api call using the http module. Your challenge is to refactor this code into a new Promise.
+
+_Remember to use the docs provided at the top_
 
 ## Challenge Two
 Nice work on your Promise! Now let's have a go at linking Promises. Your challenge is to:
