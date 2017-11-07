@@ -14,7 +14,7 @@ const myApiCall = (url, callback) => {
         try {
           callback(null, JSON.parse(data))
         }
-        catch {
+        catch (e) {
           callback("It dun broked")
         }
       })
