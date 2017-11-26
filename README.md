@@ -1,3 +1,5 @@
+**Author**: [@astroash](https://github.com/astroash) 
+
 # Promise Me This
 
 ## Learning Objectives
