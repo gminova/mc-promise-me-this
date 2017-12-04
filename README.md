@@ -16,29 +16,32 @@ Callbacks are awesome as they allow us to work with asynchronous code by waiting
 ### Calling Error First Callbacks
 ```js
 funcOne((err, resOne) => {
-  if (err) recoverFromError(err)
-  else funcTwo((err, resTwo) => {
-    if (err) recoverFromError(err)
-    else funcThree ((err, resThree) => {
-      if (err) recoverFromError(err)
-      else funcFour ((err, resFour) => {
-        if (err) recoverFromError(err)
-        else funcFive ((err, resFive) => {
-          //do the thing
-        })
-      })
-    })
-  })
-})
+  if (err) {
+    callback(err);
+  } else {
+    funcTwo(resOne, (err, resTwo) => {
+      if (err) {
+        callback(err);
+      } else {
+        funcThree(resTwo, (err, result) => {
+          if (err) {
+            callback(err);
+          } else {
+            callback(null, result);
+          }
+        });
+      }
+    });
+  }
+});
 ```
 ### Calling Promises
 ```js
-funcOne
+funcOne()
   .then(funcTwo)
   .then(funcThree)
-  .then(funcFour)
-  .then(funcFive)
-  .catch((err)=> recoverFromError(err))
+  .then(result => callback(null, result))
+  .catch(err => callback(err));
 ```
 
 ## Syntax
