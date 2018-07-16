@@ -1,7 +1,8 @@
 const https = require('https')
 
-const pokeUrl = pokemon => `https://pokeapi.co/api/v2/pokemon/${pokemon}/`
-const pikaUrl = pokeUrl('pikachu')
+const makePokeUrl = pokemon => `https://pokeapi.co/api/v2/pokemon/${pokemon}/`
+const pikaUrl = makePokeUrl('pikachu')
+
 // challenge 1
 const myPromiseApi = url => {
   return new Promise((resolve, reject) => {

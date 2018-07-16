@@ -1,7 +1,7 @@
 const https = require('https')
 
-const pokeUrl = pokemon => `https://pokeapi.co/api/v2/pokemon/${pokemon}/`
-const pikaUrl = pokeUrl('pikachu')
+const makePokeUrl = pokemon => `https://pokeapi.co/api/v2/pokemon/${pokemon}/`
+const pikaUrl = makePokeUrl('pikachu')
 
 const myApiCall = (url, callback) => {
   https
@@ -14,7 +14,7 @@ const myApiCall = (url, callback) => {
         try {
           callback(null, JSON.parse(data))
         } catch (e) {
-          callback('It dun broked')
+          callback('Oops, this isn\'t JSON')
         }
       })
     })
