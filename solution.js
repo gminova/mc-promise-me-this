@@ -44,11 +44,11 @@ pikaPromise
 
 // challenge 3
 
-const charUlr = makePokeUrl('charmander')
+const charUrl = makePokeUrl('charmander')
 const squirtUrl = makePokeUrl('squirtle')
 const bulbaUrl = makePokeUrl('bulbasaur')
 
-const charPromise = myPromiseApi(charUlr)
+const charPromise = myPromiseApi(charUrl)
 const squirtPromise = myPromiseApi(squirtUrl)
 const bulbaPromise = myPromiseApi(bulbaUrl)
 
