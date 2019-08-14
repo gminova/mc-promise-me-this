@@ -23,14 +23,9 @@ const myApiCall = (url, callback) => {
     });
 };
 
-myApiCall(pikaUrl, (err, res) => {
-  if (err) console.log(res);
-  else console.log(res);
-});
+//CHALLENGE 1
 
-//Now let's make it a Promise
-
-const myPromiseApi = () => {
+const myPromiseApi = pikaUrl => {
   return new Promise((resolve, reject) => {
     myApiCall(pikaUrl, (err, res) => {
       if (err) reject(err);
@@ -41,7 +36,17 @@ const myPromiseApi = () => {
 
 //now lets call it
 myPromiseApi(pikaUrl)
-  .then((res)=> console.log(res))
-  .catch((err)=> console.log(err))
+  .then(res => console.log("PROMISE res: ", res))
+  .catch(err => console.log(err));
+//CHALLENGE 2
+
+//CHALLENGE 3
+Promise.all([
+  myPromiseApi(makePokeUrl("pikachu")),
+  myPromiseApi(makePokeUrl("eevee")),
+  myPromiseApi(makePokeUrl("charmander"))
+])
+.then(res => console.log(res.length))
+.catch(err => console.log(err));
 
 //And call it here...
